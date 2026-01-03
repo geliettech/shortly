@@ -1,8 +1,6 @@
-import {useState} from "react"
-import Logo from "../assets/images/logo.svg";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-
 
 const Header = () => {
   const navItems = [
@@ -11,58 +9,63 @@ const Header = () => {
     { name: "Resources", href: "#" },
   ];
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="header">
-      <div className="flex justify-between">
-        <div className="flex">
+    <header className="bg-white">
+      <div className="container flex justify-between items-center">
+        <div className="flex gap-6">
           <a href="" className="">
-            <img src={Logo} alt="logo" />
+            <img src="/images/logo.svg" alt="logo" />
           </a>
 
           {/* Nav Link */}
           {/* Desktop Navbar */}
-          <ul className="hidden md:flex">
+          <ul className="hidden md:flex gap-6">
             {navItems.map((item, index) => (
               <li className="" key={index}>
-                <a href={item.href} className="nav__link">
+                <a
+                  href={item.href}
+                  className="nav__link"
+                >
                   {item.name}
                 </a>
               </li>
             ))}
           </ul>
         </div>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-6">
           <a href="#" className="nav__link">
             Login
           </a>
-          <a href="#" className="nav__link">
+          <a href="#" className="btn-primary">
             Sign Up
           </a>
         </div>
 
-
         {/* Menu Icons */}
-     <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden focus:outline-none"
-        aria-label="Toggle Menu"
-      >
-        {isOpen ? <MdClose /> : <FaBars />}
-      </button>
-        
-
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <MdClose /> : <FaBars />}
+        </button>
 
         {/* Mobile Navbar */}
-        <nav className={`md:hidden absolute top-10 left-0 w-full bg-white shadow-md transition-all duration-300 ${
-          isOpen ? "block" : "hidden"
-        }`}>
+        <nav
+          className={`md:hidden absolute top-10 left-0 w-full bg-white shadow-md transition-all duration-300 ${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
           {/* Nav Link */}
           <ul className="nav__links | primary">
             {navItems.map((item, index) => (
               <li className="" key={index}>
-                <a href={item.href} className="nav__link">
+                <a
+                  href={item.href}
+                  className="text-[16px] font-medium text-gray-700 hover:text-teal-600 transition"
+                >
                   {item.name}
                 </a>
               </li>

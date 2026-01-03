@@ -1,7 +1,11 @@
 
 const Shorten = () => {
   return (
-    <div>Shorten</div>
+    <div>
+       Shorten a link here...
+
+  Shorten It!
+    </div>
   )
 }
 

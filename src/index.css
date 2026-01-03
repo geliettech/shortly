@@ -4,27 +4,31 @@
 
 /* Base styles */
 
-*, html{
+/* *, html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+    font-family: 'Poppins', sans-serif; */
+/* } */
 :root {
     /* ## Colors */
 
 /* ### Primary */
---clr-primary-400: hsl(180, 66%, 49%);
---clr-primary-950: hsl(257, 27%, 26%);
+--clr-teal-400: hsl(180, 66%, 49%);
+--clr-purple-950: hsl(257, 27%, 26%);
 
 /* ### Secondary */
---clr-secondary-400: hsl(0, 87%, 67%);
+--clr-red-400: hsl(0, 87%, 67%);
 
 /* ### Neutral */
 --clr-neutral-400: hsl(0, 0%, 75%);
 --clr-neutral-500: hsl(257, 7%, 63%);
 --clr-neutral-900: hsl(255, 11%, 22%);
 --clr-neutral-950: hsl(260, 8%, 14%);
+
+/* ##  font weight */
+--fntw-weight-500: 500;
+--fntw-weight-700: 700;
 }
 
 li{
@@ -45,9 +49,49 @@ body{
     font-family: inherit;
     line-height: 1.6;
     background-color: #f0f1f6;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
 }
-/* components */
+/* =========================
+   Component styles
+========================= */
+@layer components {
+    .container{
+        @apply container mx-auto px-4 md:px-6 lg:px-16 py-6;
+    }
+  .btn {
+    @apply px-6 py-2 rounded-lg font-medium transition duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-teal-400 text-white hover:bg-teal-400/80 px-3 py-1 rounded-full transition duration-300;
+  }
+
+  .nav__link {
+    @apply text-neutral-500 hover:text-neutral-950 transition-colors duration-500;
+  }
+
+  .card {
+    @apply bg-white shadow-md rounded-xl p-6;
+  }
+}
 
 
-/* Utilities */
+/* =========================
+   Utility styles
+========================= */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
 

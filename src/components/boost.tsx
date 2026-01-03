@@ -2,7 +2,11 @@
 
 const Boost = () => {
   return (
-    <div>Boost</div>
+    <div>
+        Boost your links today
+
+  Get Started
+    </div>
   )
 }
 
