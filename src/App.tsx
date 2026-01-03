@@ -1,11 +1,27 @@
-
+import Header from "./components/header";
+import Hero from "./components/hero";
+import Shorten from "./components/shorten";
+import Statistics from "./components/statistics";
+import Boost from "./components/boost";
+import Footer from "./components/footer";
 
 const App = () => {
   return (
-     <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  )
-}
+    <>
+      {/* Header Section */}
+      <Header />
+      {/* Hero Section */}
+      <Hero />
+      {/* url shorten section */}
+      <Shorten />
+      {/* Advanced Statistics Section */}
+      <Statistics />
+      {/* link boost section */}
+      <Boost />
+      {/* footer section */}
+      <Footer />
+    </>
+  );
+};
 
-export default App
+export default App;
