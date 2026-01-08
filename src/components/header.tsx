@@ -21,18 +21,16 @@ const Header = () => {
 
           {/* Nav Link */}
           {/* Desktop Navbar */}
-          <ul className="hidden md:flex gap-6">
+          <div className="hidden md:flex gap-6">
             {navItems.map((item, index) => (
-              <li className="" key={index}>
-                <a
+                <a  key={index}
                   href={item.href}
                   className="nav__link"
                 >
                   {item.name}
                 </a>
-              </li>
             ))}
-          </ul>
+          </div>
         </div>
         <div className="hidden md:flex items-center gap-6">
           <a href="#" className="nav__link">
@@ -54,32 +52,30 @@ const Header = () => {
 
         {/* Mobile Navbar */}
         <nav
-          className={`md:hidden absolute top-10 left-0 w-full bg-white shadow-md transition-all duration-300 ${
+          className={`md:hidden flex flex-col items-center gap-4 py-8 absolute top-16 right-0 w-[50%] bg-white shadow-md transition-all duration-300 ${
             isOpen ? "block" : "hidden"
           }`}
         >
           {/* Nav Link */}
-          <ul className="nav__links | primary">
+          <div className="flex flex-col gap-4">
             {navItems.map((item, index) => (
-              <li className="" key={index}>
                 <a
-                  href={item.href}
-                  className="text-[16px] font-medium text-gray-700 hover:text-teal-600 transition"
+                  href={item.href} key={index}
+                  className="nav__link"
                 >
                   {item.name}
                 </a>
-              </li>
             ))}
-          </ul>
+          </div>
 
-          <ul className="nav__links | secondary">
+          <div className="flex gap-4 items-center">
             <a href="#" className="nav__link">
               Login
             </a>
-            <a href="#" className="nav__link | btn">
+            <a href="#" className="btn-primary">
               Sign Up
             </a>
-          </ul>
+          </div>
         </nav>
       </div>
     </header>
