@@ -52,7 +52,7 @@ const Header = () => {
 
         {/* Mobile Navbar */}
         <nav
-          className={`md:hidden flex flex-col items-center gap-4 py-8 absolute top-16 right-0 w-[50%] bg-white shadow-md transition-all duration-300 ${
+          className={`md:hidden flex flex-col items-center gap-4 py-8 absolute top-16 right-4 left-4 rounded-lg bg-purple-950 shadow-md transition-all duration-300 ${
             isOpen ? "block" : "hidden"
           }`}
         >
@@ -61,18 +61,17 @@ const Header = () => {
             {navItems.map((item, index) => (
                 <a
                   href={item.href} key={index}
-                  className="nav__link"
+                  className="nav__link text-white"
                 >
                   {item.name}
                 </a>
             ))}
           </div>
-
-          <div className="flex gap-4 items-center">
-            <a href="#" className="nav__link">
+          <div className="flex flex-col gap-4 items-center">
+            <a href="#" className="nav__link text-white">
               Login
             </a>
-            <a href="#" className="btn-primary">
+            <a href="#" className="btn-primary w-full">
               Sign Up
             </a>
           </div>
