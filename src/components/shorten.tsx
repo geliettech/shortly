@@ -8,13 +8,13 @@ const Shorten = () => {
           bg-[url('/images/bg-shorten-mobile.svg')]
           md:bg-[url('/images/bg-shorten-desktop.svg')]
           bg-no-repeat bg-cover
-          p-8 rounded-lg -mt-20
+          p-14 rounded-lg -mt-20
         "
       >
         <input
           type="text"
           placeholder="Shorten a link here..."
-          className="bg-white w-full md:flex-1 p-3 rounded-lg outline-none"
+          className="bg-white w-full md:flex-1 p-3 rounded-lg outline-none placeholder:text-gray-400"
         />
 
         <button className="btn-primary p-3 w-full md:w-auto rounded-lg">
