@@ -1,19 +1,3 @@
-// const Shorten = () => {
-//   return (
-//     <section className="container">
-//       <div className="flex flex-col md:flex-row items-center bg-[url("images/bg-shorten-mobile.svg")] bg-purple-950 p-6 rounded-lg -mt-15 gap-4">
-//         <input
-//           type="text"
-//           className="bg-white"
-//           placeholder=" Shorten a link here..."
-//         />
-//         <button className="btn-primary !rounded-lg">Shorten It!</button>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Shorten;
 const Shorten = () => {
   return (
     <section className="container">

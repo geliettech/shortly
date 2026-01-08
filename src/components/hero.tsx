@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <section className="bg-white min-h-[500px] flex items-center pb-20">
+    <section className="bg-white min-h-[500px] flex items-center pb-24">
       <div className="flex flex-col-reverse md:flex-row justify-between items-center container">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-6xl font-bold text-gray-950 leading-tight">More than just shorter links</h2>
