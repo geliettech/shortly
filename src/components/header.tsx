@@ -1,8 +1,6 @@
-import {useState} from "react"
-import Logo from "../assets/images/logo.svg";
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-
 
 const Header = () => {
   const navItems = [
@@ -11,72 +9,72 @@ const Header = () => {
     { name: "Resources", href: "#" },
   ];
 
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="header">
-      <div className="flex justify-between">
-        <div className="flex">
+    <header className="bg-white">
+      <div className="container flex justify-between items-center">
+        <div className="flex gap-6">
           <a href="" className="">
-            <img src={Logo} alt="logo" />
+            <img src="/images/logo.svg" alt="logo" />
           </a>
 
           {/* Nav Link */}
           {/* Desktop Navbar */}
-          <ul className="hidden md:flex">
+          <div className="hidden md:flex gap-6">
             {navItems.map((item, index) => (
-              <li className="" key={index}>
-                <a href={item.href} className="nav__link">
+                <a  key={index}
+                  href={item.href}
+                  className="nav__link"
+                >
                   {item.name}
                 </a>
-              </li>
             ))}
-          </ul>
+          </div>
         </div>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-6">
           <a href="#" className="nav__link">
             Login
           </a>
-          <a href="#" className="nav__link">
+          <a href="#" className="btn-primary">
             Sign Up
           </a>
         </div>
 
-
         {/* Menu Icons */}
-     <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden focus:outline-none"
-        aria-label="Toggle Menu"
-      >
-        {isOpen ? <MdClose /> : <FaBars />}
-      </button>
-        
-
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <MdClose /> : <FaBars />}
+        </button>
 
         {/* Mobile Navbar */}
-        <nav className={`md:hidden absolute top-10 left-0 w-full bg-white shadow-md transition-all duration-300 ${
-          isOpen ? "block" : "hidden"
-        }`}>
+        <nav
+          className={`md:hidden flex flex-col items-center gap-4 py-8 absolute top-16 right-4 left-4 rounded-lg bg-purple-950 shadow-md transition-all duration-300 ${
+            isOpen ? "block" : "hidden"
+          }`}
+        >
           {/* Nav Link */}
-          <ul className="nav__links | primary">
+          <div className="flex flex-col gap-4">
             {navItems.map((item, index) => (
-              <li className="" key={index}>
-                <a href={item.href} className="nav__link">
+                <a
+                  href={item.href} key={index}
+                  className="nav__link text-white"
+                >
                   {item.name}
                 </a>
-              </li>
             ))}
-          </ul>
-
-          <ul className="nav__links | secondary">
-            <a href="#" className="nav__link">
+          </div>
+          <div className="flex flex-col gap-4 items-center">
+            <a href="#" className="nav__link text-white">
               Login
             </a>
-            <a href="#" className="nav__link | btn">
+            <a href="#" className="btn-primary w-full">
               Sign Up
             </a>
-          </ul>
+          </div>
         </nav>
       </div>
     </header>
