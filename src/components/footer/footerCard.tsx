@@ -8,8 +8,8 @@ interface FooterCardProps {
 const FooterCard = ({ title, text }: FooterCardProps) => {
   return (
     <div className="">
-      <h3>{title}</h3>
-      <ul className="space-y-2">
+      <h3 className="">{title}</h3>
+      <ul className="space-y-2 mt-4">
         {text.map((item, index) => (
           <li
             key={index}

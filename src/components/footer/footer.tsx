@@ -18,21 +18,48 @@ const FooterItems = [
 const Footer = () => {
   return (
     <footer className="bg-gray-950 text-white px-6 py-10">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div className="container flex justify-between">
         {/* Logo */}
         <div className="text-2xl font-bold">Shortly</div>
 
-        {/* Footer Links */}
-        {FooterItems.map((item) => (
-          <FooterCard key={item.title} title={item.title} text={item.text} />
-        ))}
 
-        {/* Social links */}
-        <div className="">
-          <a href="#" target="_blank" rel="noopener noreferrer">fb</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">x</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">t</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">ig</a>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-24">
+          {/* Footer Links */}
+          {FooterItems.map((item) => (
+            <FooterCard key={item.title} title={item.title} text={item.text} />
+          ))}
+
+          {/* Social links */}
+          <div className="flex gap-4">
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="images/icon-facebook.svg"
+                alt="facebook"
+                className="w-5 h-5"
+              />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="images/icon-twitter.svg"
+                alt="facebook"
+                className="w-5 h-5"
+              />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="images/icon-pinterest.svg"
+                alt="facebook"
+                className="w-5 h-5"
+              />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <img
+                src="images/icon-instagram.svg"
+                alt="facebook"
+                className="w-5 h-5"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
