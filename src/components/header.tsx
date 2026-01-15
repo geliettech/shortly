@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
@@ -8,68 +9,62 @@ const Header = () => {
     { name: "Pricing", href: "#" },
     { name: "Resources", href: "#" },
   ];
-
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="bg-white">
-      <div className="container flex justify-between items-center">
-        <div className="flex gap-6">
-          <a href="" className="">
-            <img src="/images/logo.svg" alt="logo" />
-          </a>
+      <div className="container relative flex items-center justify-between">
+        {/* Logo + Desktop Nav */}
+        <div className="flex items-center gap-8">
+          <img src="/images/logo.svg" alt="Shortly logo" />
 
-          {/* Nav Link */}
-          {/* Desktop Navbar */}
-          <div className="hidden md:flex gap-6">
+          <nav className="hidden md:flex gap-6">
             {navItems.map((item, index) => (
               <a key={index} href={item.href} className="nav__link">
                 {item.name}
               </a>
             ))}
-          </div>
-        </div>
-        <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="nav__link">
-            Login
-          </a>
-          <a href="#" className="btn-primary">
-            Sign Up
-          </a>
+          </nav>
         </div>
 
-        {/* Menu Icons */}
+        {/* Desktop Auth */}
+        <div className="hidden md:flex items-center gap-6">
+          <a href="#" className="nav__link">Login</a>
+          <a href="#" className="btn-primary">Sign Up</a>
+        </div>
+
+        {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden focus:outline-none"
-          aria-label="Toggle Menu"
+          className="md:hidden text-2xl"
+          aria-label="Toggle menu"
         >
           {isOpen ? <MdClose /> : <FaBars />}
         </button>
 
-        {/* Mobile Navbar */}
-        <nav
-          className={`md:hidden flex flex-col items-center gap-4 py-8 absolute top-16 right-4 left-4 rounded-lg bg-purple-950 shadow-md transition-all duration-300 ${
-            isOpen ? "block" : "hidden"
-          }`}
+        {/* Mobile Menu */}
+        <div
+          className={`
+            md:hidden
+            absolute left-6 right-6 top-full mt-4
+            bg-purple-950 rounded-xl
+            grid gap-6 text-center
+            p-8
+            transform transition-all duration-300
+            ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"}
+          `}
         >
-          {/* Nav Link */}
-          <div className="flex flex-col gap-4">
-            {navItems.map((item, index) => (
-              <a href={item.href} key={index} className="nav__link text-white">
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-4 items-center">
-            <a href="#" className="nav__link text-white">
-              Login
+          {navItems.map((item, index) => (
+            <a key={index} href={item.href} className="text-white nav__link">
+              {item.name}
             </a>
-            <a href="#" className="btn-primary w-full">
-              Sign Up
-            </a>
-          </div>
-        </nav>
+          ))}
+
+          <hr className="border-gray-500/60" />
+
+          <a href="#" className="text-white nav__link">Login</a>
+          <a href="#" className="btn-primary w-full py-3">Sign Up</a>
+        </div>
       </div>
     </header>
   );

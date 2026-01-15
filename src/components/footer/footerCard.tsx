@@ -1,5 +1,3 @@
-
-
 interface FooterCardProps {
   title: string;
   text: string[];
@@ -8,17 +6,17 @@ interface FooterCardProps {
 const FooterCard = ({ title, text }: FooterCardProps) => {
   return (
     <div className="">
-      <h3 className="">{title}</h3>
-      <ul className="space-y-2 mt-4">
+      <h3 className="font-medium text-white mb-4">{title}</h3>
+      <div className="space-y-2 flex flex-col">
         {text.map((item, index) => (
-          <li
+          <a href="#"
             key={index}
-            className="text-sm text-gray-400 hover:text-white cursor-pointer"
+            className="text-sm text-gray-400 hover:text-blue-400 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             {item}
-          </li>
+          </a>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
