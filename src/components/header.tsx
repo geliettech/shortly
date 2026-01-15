@@ -23,12 +23,9 @@ const Header = () => {
           {/* Desktop Navbar */}
           <div className="hidden md:flex gap-6">
             {navItems.map((item, index) => (
-                <a  key={index}
-                  href={item.href}
-                  className="nav__link"
-                >
-                  {item.name}
-                </a>
+              <a key={index} href={item.href} className="nav__link">
+                {item.name}
+              </a>
             ))}
           </div>
         </div>
@@ -59,12 +56,9 @@ const Header = () => {
           {/* Nav Link */}
           <div className="flex flex-col gap-4">
             {navItems.map((item, index) => (
-                <a
-                  href={item.href} key={index}
-                  className="nav__link text-white"
-                >
-                  {item.name}
-                </a>
+              <a href={item.href} key={index} className="nav__link text-white">
+                {item.name}
+              </a>
             ))}
           </div>
           <div className="flex flex-col gap-4 items-center">

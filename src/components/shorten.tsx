@@ -8,8 +8,7 @@ const Shorten = () => {
           bg-[url('/images/bg-shorten-mobile.svg')]
           md:bg-[url('/images/bg-shorten-desktop.svg')]
           bg-no-repeat bg-cover
-          p-14 rounded-lg -mt-20
-        "
+          p-12 rounded-lg absolute -mt-20 left-4 right-4 md:left-24 md:right-24"
       >
         <input
           type="text"

@@ -3,7 +3,7 @@ import StatisticsCard from "./statisticsCard";
 const Statistics = () => {
   return (
     <section>
-      <div className="container mt-10 mb-14">
+      <div className="container py-28">
         <div className="text-center max-w-xl mx-auto pt-4">
           <h2 className="font-bold text-3xl leading-loose text-gray-900">Advanced Statistics</h2>
           <p className="">
