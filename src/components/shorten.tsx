@@ -1,13 +1,28 @@
+import {useState} from "react"
+
 const Shorten = () => {
+const [url, setUrl] = useState("")
+const [errorMessage, setErrorMessage] = useState("")
+
+
+const handleSubmit = (event: FormEvent) => {
+  event.preventDefault();
+
+  if(!url){
+setErrorMessage("Please add a link")
+}
+}
+
+
   return (
     <section className="relative bg-gray-100 ">
       <div className="container mx-auto px-4 lg:px-24">
         {/* Form */}
-        <form
+        <form onSubmit={handleSubmit}
           className="
             relative
             flex flex-col lg:flex-row
-            items-stretch
+            items-start
             gap-4
             bg-purple-950
             bg-[url('/images/bg-shorten-mobile.svg')]
@@ -22,18 +37,20 @@ const Shorten = () => {
             <input
               type="text"
               placeholder="Shorten a link here..."
-              className="
+              className={`}
                 bg-white
                 w-full
                 p-4
                 rounded-lg
                 outline-none
                 placeholder:text-gray-400
-              "
+              ${errorMessage ? 'border-2 border-red-400 placeholder:text-red-400' : ''}`} value={url} onChange={(event) => setUrl(event.target.value)}
             />
-            <p className="text-red-400 text-sm italic mt-1 ml-2 font-normal">
-              Please add a link
+            {errorMessage && (
+<p className="text-red-400 text-sm italic mt-1 font-normal">
+              {errorMessage}
             </p>
+            )}
           </div>
 
           <button className="btn-primary p-4 w-full lg:w-auto rounded-lg">
