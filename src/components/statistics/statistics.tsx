@@ -23,7 +23,7 @@ const cardData = [
 
 const Statistics = () => {
   return (
-    <section className="container pt-46 pb-28">
+    <section className="container py-28">
       <div className="text-center max-w-xl mx-auto">
         <h2 className="font-bold text-3xl lg:text-4xl leading-loose text-gray-900">
           Advanced Statistics
