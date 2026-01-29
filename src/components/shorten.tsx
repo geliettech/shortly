@@ -37,7 +37,7 @@ setErrorMessage("Please add a link")
             <input
               type="text"
               placeholder="Shorten a link here..."
-              className={`}
+              className={`
                 bg-white
                 w-full
                 p-4
