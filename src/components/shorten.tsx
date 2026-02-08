@@ -46,33 +46,6 @@ const Shorten = () => {
     }
   };
 
-  // const handleSubmit = async (event: FormEvent) => {
-  //   event.preventDefault();
-
-  //   if (!url) {
-  //     setErrorMessage("Please add a link");
-  //     return;
-  //   }
-
-  //   setErrorMessage("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await axios.post(
-  //       "https://cleanuri.com/api/v1/shorten",
-  //       new URLSearchParams({ url }),
-  //     );
-
-  //     setShortenUrl(res.data.result_url); // CleanURI returns { result_url: "..." }
-  //     setUrl("");
-  //   } catch (error) {
-  //     setErrorMessage("Failed to shorten link. Try again.");
-  //     console.error(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <section className="relative bg-gray-100">
       <div className="container mx-auto px-4 lg:px-24">
