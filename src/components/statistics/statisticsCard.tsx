@@ -12,7 +12,9 @@ const StatisticsCard = ({
   className,
 }: CardProps) => {
   return (
-    <div className={`bg-white p-4 rounded-lg flex flex-col items-center lg:items-start text-center lg:text-left ${className}`}>
+    <div
+      className={`bg-white p-4 rounded-lg flex flex-col items-center lg:items-start text-center lg:text-left ${className}`}
+    >
       <div className="bg-purple-950 p-4 rounded-full w-16 h-16 mb-6 -mt-12">
         <img
           src={image}

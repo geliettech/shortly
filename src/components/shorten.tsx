@@ -11,9 +11,7 @@ const Shorten = () => {
   const [url, setUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [shortenedLinks, setShortenedLinks] = useState<ShortenedLink[]>([]);
-  // const [copied, setCopied] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
-
   const [loading, setLoading] = useState(false);
 
   // Load shortened links from localStorage on mount
@@ -38,32 +36,32 @@ const Shorten = () => {
     if (!url) {
       setErrorMessage("Please add a link");
       return;
-    }
+    } else {
+      setErrorMessage("");
+      setLoading(true);
 
-    setErrorMessage("");
-    setLoading(true);
+      try {
+        const res = await axios.get(
+          `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`,
+        );
 
-    try {
-      const res = await axios.get(
-        `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`,
-      );
+        const newLink: ShortenedLink = {
+          original: url,
+          shortened: res.data,
+        };
 
-      const newLink: ShortenedLink = {
-        original: url,
-        shortened: res.data,
-      };
+        const updatedLinks = [newLink, ...shortenedLinks];
+        setShortenedLinks(updatedLinks);
 
-      const updatedLinks = [newLink, ...shortenedLinks];
-      setShortenedLinks(updatedLinks);
+        // Persist to localStorage
+        localStorage.setItem("shortenedLinks", JSON.stringify(updatedLinks));
 
-      // Persist to localStorage
-      localStorage.setItem("shortenedLinks", JSON.stringify(updatedLinks));
-
-      setUrl("");
-    } catch (error) {
-      setErrorMessage("Failed to shorten link. Try again.");
-    } finally {
-      setLoading(false);
+        setUrl("");
+      } catch (error) {
+        setErrorMessage("Failed to shorten link. Try again.");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -72,6 +70,7 @@ const Shorten = () => {
       <div className="container mx-auto px-4 lg:px-24">
         {/* Form */}
         <form
+          id="shorten"
           onSubmit={handleSubmit}
           className="
             relative
