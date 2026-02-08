@@ -113,7 +113,7 @@ Future improvements:
 ## Author
 
 - **Name:** Uhegbu Ogechi Juliet (OGE)
-- **Website:** [https://www.geliettech.com](https://www.geliettech.com)
+- **Website:** [https://ogechiuhegbu.vercel.app/](https://ogechiuhegbu.vercel.app/)
 - **Frontend Mentor:** [@geliettech](https://www.frontendmentor.io/profile/geliettech)
 - **X:** [@geliettech](https://www.x.com/geliettech)
 

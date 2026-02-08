@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
@@ -29,8 +28,12 @@ const Header = () => {
 
         {/* Desktop Auth */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#" className="nav__link">Login</a>
-          <a href="#" className="btn-primary">Sign Up</a>
+          <a href="#" className="nav__link">
+            Login
+          </a>
+          <a href="#" className="btn-primary">
+            Sign Up
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -62,8 +65,12 @@ const Header = () => {
 
           <hr className="border-gray-500/60" />
 
-          <a href="#" className="text-white nav__link">Login</a>
-          <a href="#" className="btn-primary w-full py-3">Sign Up</a>
+          <a href="#" className="text-white nav__link">
+            Login
+          </a>
+          <a href="#" className="btn-primary w-full py-3">
+            Sign Up
+          </a>
         </div>
       </div>
     </header>
