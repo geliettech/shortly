@@ -64,7 +64,7 @@ const Header = () => {
           ))}
 
           <hr className="border-gray-500/60" />
-
+          {/* Desktop Auth */}
           <a href="#" className="text-white nav__link">
             Login
           </a>

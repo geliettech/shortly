@@ -5,7 +5,9 @@ const Boost = () => {
         <h3 className="font-bold text-2xl lg:text-4xl text-white mb-6">
           Boost your links today
         </h3>
-        <button className="btn-primary">Get Started</button>
+        <button className="btn-primary">
+          <a href="#shorten">Get Started</a>
+        </button>
       </div>
     </section>
   );
