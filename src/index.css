@@ -50,7 +50,7 @@
     font-family: inherit;
     border: none;
   }
-  p{
+  p {
     font-weight: 500;
     color: var(--color-gray-500);
     line-height: 1.5;
@@ -76,5 +76,4 @@
   .statistics-cards {
     @apply flex flex-col lg:flex-row gap-20 lg:gap-10 mt-14 relative z-0 after:content-[''] after:bg-blue-400 after:absolute after:-z-10 after:w-2 after:h-full after:left-[50%] lg:after:h-2 lg:after:w-full lg:after:left-0 lg:after:top-[50%];
   }
-
 }

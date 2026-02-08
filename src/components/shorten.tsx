@@ -2,76 +2,70 @@ import { useState, FormEvent, useEffect } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import axios from "axios";
 
+interface ShortenedLink {
+  original: string;
+  shortened: string;
+}
+
 const Shorten = () => {
   const [url, setUrl] = useState("");
-  const [submittedUrl, setSubmittedUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [shortenUrl, setShortenUrl] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [shortenedLinks, setShortenedLinks] = useState<ShortenedLink[]>([]);
+  // const [copied, setCopied] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
   const [loading, setLoading] = useState(false);
 
+  // Load shortened links from localStorage on mount
   useEffect(() => {
-    if (!copied) {
-      return;
-    } else {
-      const timer = setTimeout(() => setCopied(false), 1000);
-      return () => clearTimeout(timer);
+    const savedLinks = localStorage.getItem("shortenedLinks");
+    if (savedLinks) {
+      setShortenedLinks(JSON.parse(savedLinks));
     }
-  }, [copied]);
+  }, []);
 
+  // Reset copied state after 1 second
+  useEffect(() => {
+    if (copiedIndex === null) return;
+
+    const timer = setTimeout(() => setCopiedIndex(null), 1000);
+    return () => clearTimeout(timer);
+  }, [copiedIndex]);
+
+  // Handle form submission to shorten URL
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
     if (!url) {
       setErrorMessage("Please add a link");
       return;
-    } else {
-      setErrorMessage("");
-      setLoading(true);
+    }
 
-      try {
-        setSubmittedUrl(url);
+    setErrorMessage("");
+    setLoading(true);
 
-        const res = await axios.get(
-          `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`,
-        );
+    try {
+      const res = await axios.get(
+        `https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`,
+      );
 
-        setShortenUrl(res.data);
-        setUrl("");
-      } catch (error) {
-        setErrorMessage("Failed to shorten link. Try again.");
-      } finally {
-        setLoading(false);
-      }
+      const newLink: ShortenedLink = {
+        original: url,
+        shortened: res.data,
+      };
+
+      const updatedLinks = [newLink, ...shortenedLinks];
+      setShortenedLinks(updatedLinks);
+
+      // Persist to localStorage
+      localStorage.setItem("shortenedLinks", JSON.stringify(updatedLinks));
+
+      setUrl("");
+    } catch (error) {
+      setErrorMessage("Failed to shorten link. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
-
-  // const handleSubmit = async (event: FormEvent) => {
-  //   event.preventDefault();
-
-  //   if (!url) {
-  //     setErrorMessage("Please add a link");
-  //     return;
-  //   }
-
-  //   setErrorMessage("");
-  //   setLoading(true);
-
-  //   try {
-  //     const res = await axios.post(
-  //       "https://cleanuri.com/api/v1/shorten",
-  //       new URLSearchParams({ url }),
-  //     );
-
-  //     setShortenUrl(res.data.result_url); // CleanURI returns { result_url: "..." }
-  //     setUrl("");
-  //   } catch (error) {
-  //     setErrorMessage("Failed to shorten link. Try again.");
-  //     console.error(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   return (
     <section className="relative bg-gray-100">
@@ -121,49 +115,47 @@ const Shorten = () => {
           </button>
         </form>
 
-        {/* Result */}
-        {submittedUrl && shortenUrl && (
+        {/*  Result: Shortened Links */}
+        {shortenedLinks.map((link, index) => (
           <div className="mt-6">
             <div
-              className="bg-white
-              p-4 sm:p-6
+              key={index}
+              className="bg-white p-4 sm:p-6
               rounded-lg
               flex flex-col lg:flex-row
               justify-between
               items-start lg:items-center
-              gap-4
+              gap-6
               shadow text-center"
             >
-              <span className="text-gray-950 break-all">{submittedUrl}</span>
-
+              <span className="text-gray-950 break-all">{link.original}</span>
               <hr className="w-full lg:hidden border-gray-400" />
-
               <div className="flex flex-col items-center sm:flex-row gap-4 w-full lg:w-auto">
                 <a
-                  href={shortenUrl}
+                  href={link.shortened}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 font-semibold break-all"
                 >
-                  {shortenUrl}
+                  {link.shortened}
                 </a>
 
                 <CopyToClipboard
-                  text={shortenUrl}
-                  onCopy={() => setCopied(true)}
+                  text={link.shortened}
+                  onCopy={() => setCopiedIndex(index)}
                 >
                   <button
                     className={`btn-primary w-full sm:w-auto rounded-lg ${
-                      copied ? "bg-purple-950" : ""
+                      copiedIndex === index ? "bg-purple-950" : ""
                     }`}
                   >
-                    {copied ? "Copied!" : "Copy"}
+                    {copiedIndex === index ? "Copied!" : "Copy"}
                   </button>
                 </CopyToClipboard>
               </div>
             </div>
           </div>
-        )}
+        ))}
       </div>
     </section>
   );
